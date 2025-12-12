@@ -1,4 +1,3 @@
-import Team from "../Team/Team";
 import styles from "./Services.module.scss";
 const SERVICES = [
   {
