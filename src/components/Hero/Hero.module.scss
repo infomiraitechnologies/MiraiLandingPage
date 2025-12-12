@@ -1,0 +1,59 @@
+.hero {
+  width: 100%;
+  min-height: 90vh;                 // un poco menos de 100vh para que entre navbar + curva
+  background-size: cover;
+  background-position: center bottom; // 👈 importante: anclar al bottom
+  background-repeat: no-repeat;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  text-align: center;
+  max-width: 700px;
+}
+
+.actions {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.primaryBtn {
+  padding: 0.8rem 1.6rem;
+  border-radius: 999px;
+  background: #0052a8;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.outlineBtn {
+  padding: 0.8rem 1.6rem;
+  border-radius: 999px;
+  border: 2px solid #0052a8;
+  color: #0052a8;
+  font-weight: 600;
+  text-decoration: none;
+  background: transparent;
+}
+
+.visual {
+  /* después metemos imagen / gradient / etc */
+}
+
+
+
+
+.content {
+  position: relative;
+  max-width: 700px;
+  text-align: left;
+  color: #ffffff;
+}
+

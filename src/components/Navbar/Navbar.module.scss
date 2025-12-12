@@ -1,0 +1,70 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+
+  /* 🔥 Glassmorphism */
+  background: rgba(255, 255, 255, 0.44); // más transparente
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.nav {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0.7rem 2rem; // un toque más bajo
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 44px; // un poquito más grande
+  width: auto;
+}
+
+.links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+
+  li a {
+    text-decoration: none;
+    color: black; /* letras blancas */
+    font-weight: 500;
+    font-size: 15px;
+    transition: color 0.15s ease, opacity 0.15s ease;
+
+    &:hover {
+      color: #e8f6ff; /* sutil hover claro */
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(0, 87, 184, 0.15);
+      border-radius: 4px;
+    }
+  }
+}
+
+.contactBtn {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  background-color: #0057b8;
+  color: white !important;
+  transition: 0.2s ease;
+
+  &:hover {
+    background-color: #003f87;
+  }
+}

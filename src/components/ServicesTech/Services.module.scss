@@ -1,0 +1,71 @@
+.services {
+  position: relative;
+  background: #e6ebf1;
+  overflow: hidden;
+  text-align: center;
+  background: #ffffff;
+  background-size: cover;      // hace que la imagen cubra todo el ancho
+  background-position: center; // centra la imagen
+  background-repeat: no-repeat;// evita repeticiones
+  background-attachment: scroll; // (opcional, sino usar fixed para efecto parallax)
+  h2 {
+    font-size: 2.2rem;
+    color: #0a2540;
+    margin-bottom: 12px;
+  }
+
+  .subtitle {
+    font-size: 1.05rem;
+    color: #4b6475;
+    max-width: 650px;
+    margin: 0 auto 50px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 32px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.card {
+  background: #ffffff;
+  padding: 30px 26px;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 6px 20px rgba(0, 32, 96, 0.08);
+  transition: 0.25s ease;
+  text-align: center;
+
+  img {
+    width: 55px;
+    height: 55px;
+    margin-bottom: 16px;
+    object-fit: contain;
+  }
+
+  h3 {
+    font-size: 1.15rem;
+    margin-bottom: 10px;
+    color: #0a2540;
+  }
+
+  p {
+    color: #43535f;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(0, 32, 96, 0.14);
+  }
+}
+
+.bottomCurve {
+  display: block;
+  background: #FFFFFF; // importante
+    line-height: 0;
+}
