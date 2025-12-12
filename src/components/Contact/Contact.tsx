@@ -44,7 +44,7 @@ export default function Contact() {
             ¿Listo para transformar tu <span>negocio</span>?
           </h2>
           <p className={styles.desc}>
-            Contanos qué necesitás y te respondemos con una propuesta clara. Sin vueltas, sin humo.
+            Contanos qué necesitás y te respondemos con una propuesta clara.
           </p>
           <div className={styles.bullets}>
             <div className={styles.bullet}>Respuesta en menos de 24hs</div>
