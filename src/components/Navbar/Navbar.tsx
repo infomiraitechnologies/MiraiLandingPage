@@ -12,8 +12,6 @@ const NavBar = () => {
           <li><a href="#inicio">Inicio</a></li>
           <li><a href="#tecnologia">Tecnología</a></li>
           <li><a href="#servicios">Servicios</a></li>
-          <li><a href="#proceso">Proceso</a></li>
-          <li><a href="#equipo">Equipo</a></li>
           <li><a href="#contacto" className={styles.contactBtn}>Contacto</a></li>
         </ul>
       </nav>
