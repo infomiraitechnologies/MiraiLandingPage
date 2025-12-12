@@ -1,4 +1,4 @@
-import styles from "./NavBar.module.scss";
+import styles from "./Navbar.module.scss";
 import logo from "../../assets/img/mirai_logo_hd.png";
 const NavBar = () => {
   return (
