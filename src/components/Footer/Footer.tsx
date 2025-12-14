@@ -61,9 +61,8 @@ export default function Footer() {
         <div className={styles.col}>
           <h4>Redes</h4>
           <div className={styles.social}>
-            <a href="#" aria-label="LinkedIn">LinkedIn</a>
-            <a href="#" aria-label="GitHub">GitHub</a>
-            <a href="#" aria-label="Instagram">Instagram</a>
+            <a target="_blank" href="https://www.linkedin.com/in/mirai-technologies-4a23ab39b/" aria-label="LinkedIn">LinkedIn</a>
+            <a target="_blank" href="https://www.instagram.com/miraitech.it?igsh=aTVpMGNxZjc3bWUx" aria-label="Instagram">Instagram</a>
           </div>
         </div>
       </div>
