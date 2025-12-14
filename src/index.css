@@ -10,7 +10,6 @@ body {
   font-family: var(--font-body);
   font-weight: 400;
   color: #0a2540;
-  background-color: #ffffff;
 }
 
 h1,
@@ -31,4 +30,7 @@ a {
 button {
   font-family: var(--font-body);
   cursor: pointer;
+}
+p {
+  font-family: var(--font-body);
 }
