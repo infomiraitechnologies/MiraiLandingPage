@@ -4,6 +4,7 @@ import logo from "../../assets/img/mirai_logo_hd.png";
 
 const NAV_HEIGHT = 72;
 const DESKTOP_MIN_WIDTH = 1024;
+const MOUSE_TOP_ZONE = 80;
 
 const NavBar = () => {
   const lastScrollY = useRef(0);
@@ -21,9 +22,10 @@ const NavBar = () => {
     window.scrollTo({ top: y, behavior: "smooth" });
     window.history.replaceState(null, "", window.location.pathname);
 
-    setMenuOpen(false); // 👈 cerrar menú al navegar
+    setMenuOpen(false);
   };
 
+  // 🔽 Scroll logic: hide on down, show on up
   useEffect(() => {
     const onScroll = () => {
       if (!isDesktop()) {
@@ -31,20 +33,49 @@ const NavBar = () => {
         return;
       }
 
+      // Si el menú está abierto, no ocultes
+      if (menuOpen) {
+        setHidden(false);
+        return;
+      }
+
       const y = window.scrollY;
+
+      // cerca del top: siempre visible
+      if (y <= 80) {
+        setHidden(false);
+        lastScrollY.current = y;
+        return;
+      }
+
       const goingDown = y > lastScrollY.current;
-
-      if (y < 80) setHidden(false);
-      else setHidden(goingDown);
-
+      setHidden(goingDown);
       lastScrollY.current = y;
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [menuOpen]);
 
-  // 👇 si paso a desktop, cierro menú
+  // 🖱 Mouse logic (solo desktop): si sube a zona top, mostrar
+  useEffect(() => {
+    const onMove = (e: MouseEvent) => {
+      if (!isDesktop()) return;
+      if (menuOpen) return;
+      if (window.scrollY <= 80) return;
+
+      if (e.clientY <= MOUSE_TOP_ZONE) {
+        setHidden(false);
+      } else {
+        setHidden(true);
+      }
+    };
+
+    window.addEventListener("mousemove", onMove);
+    return () => window.removeEventListener("mousemove", onMove);
+  }, [menuOpen]);
+
+  // cerrar menú si paso a desktop o resize
   useEffect(() => {
     const onResize = () => {
       if (isDesktop()) setMenuOpen(false);
@@ -64,13 +95,13 @@ const NavBar = () => {
           <li><button onClick={() => scrollToId("tecnologia")}>Tecnología</button></li>
           <li><button onClick={() => scrollToId("servicios")}>Servicios</button></li>
           <li>
-            <button className={styles.contactBtn} onClick={() => scrollToId("contacto")}>
+            <button  onClick={() => scrollToId("contacto")}>
               Contacto
             </button>
           </li>
         </ul>
 
-        {/* Mobile button */}
+        {/* Mobile burger */}
         <button
           className={styles.burger}
           type="button"
@@ -94,7 +125,6 @@ const NavBar = () => {
         </button>
       </div>
 
-      {/* overlay */}
       {menuOpen && <div className={styles.overlay} onClick={() => setMenuOpen(false)} />}
     </header>
   );
