@@ -10,12 +10,10 @@ function App() {
     <>
       <Navbar />
       <Hero />
-        <TechStack />
-        <Services />
- <Contact />
+      <TechStack />
+      <Services />
+      <Contact />
       <Footer />
-   
-
     </>
   );
 }
