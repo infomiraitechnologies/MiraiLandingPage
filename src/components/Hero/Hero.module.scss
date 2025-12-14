@@ -1,59 +1,99 @@
 .hero {
   width: 100%;
-  min-height: 90vh;                 // un poco menos de 100vh para que entre navbar + curva
+  min-height: calc(100vh - 72px);
+  padding-top: 72px; // espacio nav
   background-size: cover;
-  background-position: center bottom; // 👈 importante: anclar al bottom
+  background-position: center bottom;
   background-repeat: no-repeat;
 
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  // si no querés oscurecer, bajalo o borrá
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.35),
+    rgba(0, 0, 0, 0.15)
+  );
+  pointer-events: none;
+}
+
+.container {
+  width: min(1200px, 100%);
+  margin: 0 auto;
+  padding: 0 18px; // 👈 clave para mobile
 }
 
 .content {
   position: relative;
   z-index: 1;
   color: #fff;
-  text-align: center;
-  max-width: 700px;
+  max-width: 680px;
+  text-align: left;
+
+  h1 {
+    font-size: clamp(2rem, 5.2vw, 3.2rem);
+    line-height: 1.05;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: clamp(1rem, 2.4vw, 1.15rem);
+    line-height: 1.5;
+    max-width: 42ch;
+    margin-bottom: 18px;
+  }
 }
 
 .actions {
   display: flex;
-  gap: 0.8rem;
+  gap: 12px;
+  flex-wrap: wrap; // 👈 evita que se “corten”
+}
+
+.primaryBtn,
+.outlineBtn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.85rem 1.35rem;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.95rem;
+  min-width: 200px; // queda prolijo en mobile
 }
 
 .primaryBtn {
-  padding: 0.8rem 1.6rem;
-  border-radius: 999px;
   background: #0052a8;
   color: #fff;
-  font-weight: 600;
-  text-decoration: none;
 }
 
 .outlineBtn {
-  padding: 0.8rem 1.6rem;
-  border-radius: 999px;
   border: 2px solid #0052a8;
-  color: #0052a8;
-  font-weight: 600;
-  text-decoration: none;
-  background: transparent;
+  color: #ffffff;            // 👈 en hero oscuro, blanco se lee mejor
+  background: rgba(0, 82, 168, 0.12);
 }
 
-.visual {
-  /* después metemos imagen / gradient / etc */
+/* Mobile fino: botones en columna */
+@media (max-width: 520px) {
+  .content {
+    text-align: left;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .primaryBtn,
+  .outlineBtn {
+    width: 100%;
+    min-width: 0;
+  }
 }
-
-
-
-
-.content {
-  position: relative;
-  max-width: 700px;
-  text-align: left;
-  color: #ffffff;
-}
-

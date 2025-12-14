@@ -1,12 +1,11 @@
 import { useEffect, useState, type FormEvent } from "react";
-
 import styles from "./Contact.module.scss";
 
 const TO = "infomiraitechnologies@gmail.com";
 
 export default function Contact() {
   const [privacyOpen, setPrivacyOpen] = useState(false);
-  
+
   const PRIVACY_TEXT = `
 Política de Privacidad – Mirai Technologies
 
@@ -53,6 +52,7 @@ Al enviar tus datos a través de nuestros formularios, aceptás expresamente est
 9. Modificaciones
 Mirai Technologies se reserva el derecho de modificar esta política para adaptarla a cambios legales o mejoras del servicio. La versión vigente estará siempre disponible en este sitio.
 `.trim();
+
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
@@ -76,32 +76,27 @@ Mirai Technologies se reserva el derecho de modificar esta política para adapta
     ].join("\n");
 
     const mailto = `mailto:${TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-    // abre el cliente de correo del usuario con todo precargado
     window.location.href = mailto;
-
-    // opcional: reset
-    // form.reset();
   }
+
+  // lock scroll cuando el modal está abierto (sin salto)
   useEffect(() => {
-  if (!privacyOpen) return;
+    if (!privacyOpen) return;
 
-  const prevOverflow = document.body.style.overflow;
-  const prevPaddingRight = document.body.style.paddingRight;
+    const prevOverflow = document.body.style.overflow;
+    const prevPaddingRight = document.body.style.paddingRight;
 
-  // evita el "salto" cuando desaparece la scrollbar
-  const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    document.body.style.overflow = "hidden";
+    if (scrollbarWidth > 0) {
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+    }
 
-  document.body.style.overflow = "hidden";
-  if (scrollbarWidth > 0) {
-    document.body.style.paddingRight = `${scrollbarWidth}px`;
-  }
-
-  return () => {
-    document.body.style.overflow = prevOverflow;
-    document.body.style.paddingRight = prevPaddingRight;
-  };
-}, [privacyOpen]);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      document.body.style.paddingRight = prevPaddingRight;
+    };
+  }, [privacyOpen]);
 
   return (
     <section className={styles.contact} id="contacto">
@@ -114,6 +109,7 @@ Mirai Technologies se reserva el derecho de modificar esta política para adapta
           <p className={styles.desc}>
             Contanos qué necesitás y te respondemos con una propuesta clara.
           </p>
+
           <div className={styles.bullets}>
             <div className={styles.bullet}>Respuesta en menos de 24hs</div>
             <div className={styles.bullet}>Estimación y roadmap</div>
@@ -121,11 +117,7 @@ Mirai Technologies se reserva el derecho de modificar esta política para adapta
         </div>
 
         <div className={styles.right}>
-          <form
-            style={{ display: "flex", flexDirection: "column", gap: "10px" }}
-            className={styles.form}
-            onSubmit={handleSubmit}
-          >
+          <form className={styles.form} onSubmit={handleSubmit}>
             <div className={styles.row}>
               <input name="name" placeholder="Nombre y Apellido" required />
               <input name="company" placeholder="Empresa" />
@@ -133,17 +125,22 @@ Mirai Technologies se reserva el derecho de modificar esta política para adapta
 
             <input name="website" placeholder="Sitio web de la empresa (opcional)" />
             <input name="email" placeholder="Correo electrónico" type="email" required />
+
             <textarea
               name="message"
               placeholder="Contanos sobre tu proyecto (objetivo, tiempos, presupuesto aprox)."
               required
             />
 
-            <label style={{cursor:"pointer"}} onClick={() => setPrivacyOpen(true) } className={styles.check}>
+            <label className={styles.check}>
               <input name="privacy" type="checkbox" required />
-              <span style={{color:"#0bbcd6"}} >
+              <p
+              className={styles.privacyLink}
+              style={{color:"rgb(11, 188, 214)"}}
+                onClick={() => setPrivacyOpen(true)}
+              >
                 Acepto la política de privacidad.
-              </span>
+              </p>
             </label>
 
             <label className={styles.check}>
@@ -155,10 +152,9 @@ Mirai Technologies se reserva el derecho de modificar esta política para adapta
           </form>
         </div>
       </div>
+
       {privacyOpen && (
-        <div
-          className={styles.modalOverlay}
-        >
+        <div className={styles.modalOverlay}>
           <div className={styles.modal} role="dialog" aria-modal="true" aria-label="Política de privacidad">
             <div className={styles.modalHeader}>
               <div>
