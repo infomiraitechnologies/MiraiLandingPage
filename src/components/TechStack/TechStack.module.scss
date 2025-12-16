@@ -187,9 +187,9 @@
 
 /* Mobile: modal tipo "sheet" abajo (más moderno) */
 @media (max-width: 520px) {
-  .popupOverlay {
-    place-items: end center;
-    padding: 12px;
+ .popupOverlay {
+    place-items: center;
+    padding: 16px;
   }
 
   .popup {
