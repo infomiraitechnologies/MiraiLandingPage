@@ -79,12 +79,12 @@ const TECHS: Tech[] = [
     description:
       "Control de versiones para trabajo en equipo, revisiones, historial y flujos de desarrollo seguros."
   },
-  {
-    name: "Figma",
-    icon: figmaIcon,
-    description:
-      "Diseño colaborativo para wireframes, prototipos y handoff. Ayuda a alinear producto, UI y desarrollo."
-  }
+  // {
+  //   name: "Figma",
+  //   icon: figmaIcon,
+  //   description:
+  //     "Diseño colaborativo para wireframes, prototipos y handoff. Ayuda a alinear producto, UI y desarrollo."
+  // }
 ];
 
 
