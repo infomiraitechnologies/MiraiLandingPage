@@ -4,7 +4,7 @@ import styles from "./TechStack.module.scss";
 import reactIcon from "../../assets/icons/react.svg";
 import angularIcon from "../../assets/icons/angular.svg";
 import nextIcon from "../../assets/icons/nextdotjs.svg";
-import figmaIcon from "../../assets/icons/figma.svg";
+// import figmaIcon from "../../assets/icons/figma.svg";
 import gitIcon from "../../assets/icons/git.svg";
 import mysqlIcon from "../../assets/icons/sqlite.svg";
 import typescriptIcon from "../../assets/icons/typescript.svg";
