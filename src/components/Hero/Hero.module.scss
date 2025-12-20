@@ -68,12 +68,14 @@
 .primaryBtn {
   background: #0052a8;
   color: #fff;
+  cursor: pointer;
 }
 
 .outlineBtn {
   border: 2px solid #0052a8;
   color: #ffffff;            // 👈 en hero oscuro, blanco se lee mejor
   background: rgba(0, 82, 168, 0.12);
+  cursor: pointer;
 }
 
 /* Mobile fino: botones en columna */

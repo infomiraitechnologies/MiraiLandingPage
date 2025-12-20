@@ -1,6 +1,17 @@
 import styles from "./Hero.module.scss";
 import heroImg from "../../assets/img/HeroBackground_white_fixed.png";
 
+const NAV_HEIGHT = 72;
+
+const scrollToId = (id: string) => {
+  const el = document.getElementById(id);
+  if (!el) return;
+
+  const y = el.getBoundingClientRect().top + window.scrollY - NAV_HEIGHT;
+  window.scrollTo({ top: y, behavior: "smooth" });
+  window.history.replaceState(null, "", window.location.pathname);
+};
+
 const Hero = () => {
   return (
     <section
@@ -19,12 +30,12 @@ const Hero = () => {
           </p>
 
           <div className={styles.actions}>
-            <a href="#contacto" className={styles.primaryBtn}>
+            <p onClick={() => scrollToId("contacto")} className={styles.primaryBtn}>
               Quiero hablar con ustedes
-            </a>
-            <a href="#servicios" className={styles.outlineBtn}>
+            </p>
+            <p onClick={() => scrollToId("servicios")} className={styles.outlineBtn}>
               Ver qué hacemos
-            </a>
+            </p>
           </div>
         </div>
       </div>
