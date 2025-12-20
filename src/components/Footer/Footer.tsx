@@ -1,4 +1,5 @@
 import styles from "./Footer.module.scss";
+import imagen32px from "../../assets/img/favicon-32x32.png";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -21,8 +22,7 @@ export default function Footer() {
         {/* Brand */}
         <div className={styles.brand}>
           <div className={styles.logoRow}>
-            {/* Si ya tenés logo, reemplazá el texto por <img .../> */}
-            <div className={styles.logoMark} aria-hidden="true" />
+            <img className={styles.logoCurve} src={imagen32px} alt="Logo Mirai Technologies" />
             <div>
               <h3 className={styles.name}>Mirai Technologies</h3>
               <p className={styles.tagline}>
