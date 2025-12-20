@@ -1,24 +1,20 @@
 import styles from "./Footer.module.scss";
 import imagen32px from "../../assets/img/favicon-32x32.png";
-import { useState } from "react";
 
 const NAV_HEIGHT = 72;
 
 export default function Footer() {
   const year = new Date().getFullYear();
-  const [menuOpen, setMenuOpen] = useState(false);
 
 
-    const scrollToId = (id: string) => {
+  const scrollToId = (id: string) => {
     const el = document.getElementById(id);
     if (!el) return;
 
     const y = el.getBoundingClientRect().top + window.scrollY - NAV_HEIGHT;
     window.scrollTo({ top: y, behavior: "smooth" });
     window.history.replaceState(null, "", window.location.pathname);
-
-    setMenuOpen(false);
-  };
+};
 
   return (
     <>
