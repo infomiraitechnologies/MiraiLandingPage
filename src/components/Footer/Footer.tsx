@@ -1,8 +1,20 @@
 import styles from "./Footer.module.scss";
 import imagen32px from "../../assets/img/favicon-32x32.png";
 
+const NAV_HEIGHT = 72;
+
 export default function Footer() {
   const year = new Date().getFullYear();
+
+
+  const scrollToId = (id: string) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    const y = el.getBoundingClientRect().top + window.scrollY - NAV_HEIGHT;
+    window.scrollTo({ top: y, behavior: "smooth" });
+    window.history.replaceState(null, "", window.location.pathname);
+};
 
   return (
     <>
@@ -32,30 +44,29 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Links */}
-        <div className={styles.col}>
-          <h4>Secciones</h4>
-          <ul>
-            <li><a href="#servicios">Servicios</a></li>
-            <li><a href="#tecnologias">Tecnologías</a></li>
-            <li><a href="#team">Team</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-          </ul>
-        </div>
+          {/* Links */}
+          <div className={styles.col}>
+            <h4>Secciones</h4>
+            <ul>
+              <li><div><p style={{width:20}} onClick={() => scrollToId("tecnologia")}>Tecnología</p></div></li>
+              <li><div><p style={{width:20}} onClick={() => scrollToId("servicios")}>Servicios</p></div></li>
+              <li><div><p style={{width:20}} onClick={() => scrollToId("contacto")}>Contacto</p></div></li>
+            </ul>
+          </div>
 
-        {/* Contact */}
-        <div className={styles.col}>
-          <h4>Contacto</h4>
-          <ul>
-            <li>
-              <a href="mailto:infomiraitechnologies@gmail.com">
-                infomiraitechnologies@gmail.com
-              </a>
-            </li>
-            <li>Buenos Aires, AR</li>
-            <li>Lun–Vie · 9:00–18:00</li>
-          </ul>
-        </div>
+          {/* Contact */}
+          <div className={styles.col}>
+            <h4>Contacto</h4>
+            <ul>
+              <li>
+                <a href="mailto:infomiraitechnologies@gmail.com">
+                  infomiraitechnologies@gmail.com
+                </a>
+              </li>
+              <li>Buenos Aires, AR</li>
+              <li>Lun–Vie · 9:00–18:00</li>
+            </ul>
+          </div>
 
         {/* Social */}
         <div className={styles.col}>

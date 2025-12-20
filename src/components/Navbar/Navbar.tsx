@@ -94,11 +94,7 @@ const NavBar = () => {
           <li><button onClick={() => scrollToId("inicio")}>Inicio</button></li>
           <li><button onClick={() => scrollToId("tecnologia")}>Tecnología</button></li>
           <li><button onClick={() => scrollToId("servicios")}>Servicios</button></li>
-          <li>
-            <button  onClick={() => scrollToId("contacto")}>
-              Contacto
-            </button>
-          </li>
+          <li><button  onClick={() => scrollToId("contacto")}>Contacto</button></li>
         </ul>
 
         {/* Mobile burger */}
