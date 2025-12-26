@@ -63,8 +63,12 @@ export default function Footer() {
                   infomiraitechnologies@gmail.com
                 </a>
               </li>
+              <li>
+                <a target="_blank" href="https://wa.me/5491154709065?text=Hola%20quiero%20más%20info">
+                  +54 9 11 5470-9065
+                </a>
+              </li>
               <li>Buenos Aires, AR</li>
-              <li>Lun–Vie · 9:00–18:00</li>
             </ul>
           </div>
 
