@@ -123,12 +123,11 @@ Mirai Technologies se reserva el derecho de modificar esta política para adapta
               <input name="company" placeholder="Empresa" />
             </div>
 
-            <input name="website" placeholder="Sitio web de la empresa (opcional)" />
             <input name="email" placeholder="Correo electrónico" type="email" required />
 
             <textarea
               name="message"
-              placeholder="Contanos sobre tu proyecto (objetivo, tiempos, presupuesto aprox)."
+              placeholder="Contanos sobre tu proyecto (objetivo, tiempos, presupuesto)."
               required
             />
 
