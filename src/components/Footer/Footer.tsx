@@ -64,7 +64,7 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a target="_blank" href="https://wa.me/5491154709065?text=Hola%20quiero%20más%20info">
+                <a target="_blank" href="https://wa.me/5491154709065?text=Hola%2C%20buen%20día.%20Estoy%20interesado%2Fa%20en%20sus%20servicios%20de%20desarrollo.%20¿Podrían%20brindarme%20más%20información%3F%20Gracias.">
                   +54 9 11 5470-9065
                 </a>
               </li>
