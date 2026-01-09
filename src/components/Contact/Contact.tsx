@@ -118,7 +118,7 @@ La versión vigente estará siempre disponible en este sitio.
 
             <textarea
               name="message"
-              placeholder="Contanos sobre tu proyecto (objetivo, tiempos, presupuesto aprox)."
+              placeholder="Contanos sobre tu proyecto (objetivo, tiempos, presupuesto)."
               required
             />
 
