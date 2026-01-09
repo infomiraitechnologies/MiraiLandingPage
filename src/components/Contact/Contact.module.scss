@@ -363,3 +363,24 @@
     filter: brightness(1.05);
   }
 }
+.whatsBtn {
+  width: fit-content;
+  padding: 14px 28px;
+  border-radius: 12px;
+  border: 1px solid rgba(207, 215, 223, 0.9);
+  background: #ffffff;
+  color: #0a2540;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.2s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 35px rgba(10, 37, 64, 0.12);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(11, 188, 214, 0.18);
+  }
+}

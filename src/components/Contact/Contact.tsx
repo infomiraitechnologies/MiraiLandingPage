@@ -17,40 +17,18 @@ Correo electrónico: infomiraitechnologies@gmail.com
 Ubicación: Buenos Aires, Argentina
 
 2. Datos personales que recopilamos
-Podemos recopilar los siguientes datos cuando completás formularios o nos contactás:
 - Nombre y apellido
 - Correo electrónico
 - Información relacionada con tu proyecto o consulta
-- Cualquier otro dato que decidas proporcionar voluntariamente
 
 3. Finalidad del uso de los datos
-Los datos personales recopilados se utilizan únicamente para:
-- Responder consultas o solicitudes de contacto
-- Brindar información sobre nuestros servicios
-- Elaborar propuestas comerciales
-- Mejorar la comunicación con potenciales clientes
+Responder consultas, elaborar propuestas y mejorar la comunicación.
 
-4. Conservación de los datos
-Los datos serán conservados únicamente durante el tiempo necesario para cumplir con la finalidad para la cual fueron recopilados o mientras exista una relación comercial o de contacto activa.
-
-5. Confidencialidad y seguridad
-Implementamos medidas técnicas y organizativas razonables para proteger tus datos personales contra accesos no autorizados, pérdida o uso indebido.
-
-6. Cesión de datos a terceros
-Mirai Technologies no vende, alquila ni cede datos personales a terceros, salvo obligación legal o requerimiento de autoridad competente.
-
-7. Derechos del titular de los datos
-De acuerdo con la Ley 25.326 de Protección de Datos Personales, tenés derecho a:
-- Acceder a tus datos
-- Rectificarlos o actualizarlos
-- Solicitar su eliminación
-Podés ejercer estos derechos enviando un correo a: infomiraitechnologies@gmail.com
-
-8. Aceptación de la política
-Al enviar tus datos a través de nuestros formularios, aceptás expresamente esta Política de Privacidad.
+4. Derechos
+Ley 25.326 – Podés solicitar acceso, rectificación o eliminación.
 
 9. Modificaciones
-Mirai Technologies se reserva el derecho de modificar esta política para adaptarla a cambios legales o mejoras del servicio. La versión vigente estará siempre disponible en este sitio.
+La versión vigente estará siempre disponible en este sitio.
 `.trim();
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
@@ -59,17 +37,12 @@ Mirai Technologies se reserva el derecho de modificar esta política para adapta
 
     const name = (form.elements.namedItem("name") as HTMLInputElement).value.trim();
     const company = (form.elements.namedItem("company") as HTMLInputElement).value.trim();
-    const website = (form.elements.namedItem("website") as HTMLInputElement).value.trim();
-    const email = (form.elements.namedItem("email") as HTMLInputElement).value.trim();
     const message = (form.elements.namedItem("message") as HTMLTextAreaElement).value.trim();
 
     const subject = `Nuevo contacto Mirai - ${name || "Sin nombre"}`;
-
     const body = [
       `Nombre: ${name}`,
       `Empresa: ${company}`,
-      `Web: ${website}`,
-      `Email: ${email}`,
       ``,
       `Mensaje:`,
       message,
@@ -79,7 +52,27 @@ Mirai Technologies se reserva el derecho de modificar esta política para adapta
     window.location.href = mailto;
   }
 
-  // lock scroll cuando el modal está abierto (sin salto)
+  const handleWhatsApp = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const form = e.currentTarget.closest("form") as HTMLFormElement | null;
+    if (!form) return;
+
+    // HTML5 validation
+    if (!form.reportValidity()) return;
+
+    const name = (form.elements.namedItem("name") as HTMLInputElement).value.trim();
+    const company = (form.elements.namedItem("company") as HTMLInputElement).value.trim();
+    const message = (form.elements.namedItem("message") as HTMLTextAreaElement).value.trim();
+
+    const text =
+      `Hola! Quiero contactarlos \n` +
+      `Nombre: ${name}\n` +
+      (company ? `Empresa: ${company}\n` : "") +
+      `Mensaje: ${message}`;
+
+    const url = `https://wa.me/5491154709065?text=${encodeURIComponent(text)}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
+
   useEffect(() => {
     if (!privacyOpen) return;
 
@@ -123,9 +116,6 @@ Mirai Technologies se reserva el derecho de modificar esta política para adapta
               <input name="company" placeholder="Empresa" />
             </div>
 
-            <input name="website" placeholder="Sitio web de la empresa (opcional)" />
-            <input name="email" placeholder="Correo electrónico" type="email" required />
-
             <textarea
               name="message"
               placeholder="Contanos sobre tu proyecto (objetivo, tiempos, presupuesto aprox)."
@@ -135,8 +125,7 @@ Mirai Technologies se reserva el derecho de modificar esta política para adapta
             <label className={styles.check}>
               <input name="privacy" type="checkbox" required />
               <p
-              className={styles.privacyLink}
-              style={{color:"rgb(11, 188, 214)"}}
+                className={styles.privacyLink}
                 onClick={() => setPrivacyOpen(true)}
               >
                 Acepto la política de privacidad.
@@ -148,14 +137,23 @@ Mirai Technologies se reserva el derecho de modificar esta política para adapta
               <span>Acepto recibir newsletters.</span>
             </label>
 
-            <button type="submit">Hablemos de tu proyecto</button>
+          <div style={{display:"flex",flexDirection:"row",gap:"10px"}}>
+              <button
+                type="button"
+                className={styles.whatsBtn}
+                onClick={handleWhatsApp}
+              >
+                Contactanos vía WhatsApp
+              </button>
+              <button type="submit">Contactanos vía mail</button>
+          </div>
           </form>
         </div>
       </div>
 
       {privacyOpen && (
         <div className={styles.modalOverlay}>
-          <div className={styles.modal} role="dialog" aria-modal="true" aria-label="Política de privacidad">
+          <div className={styles.modal} role="dialog" aria-modal="true">
             <div className={styles.modalHeader}>
               <div>
                 <p className={styles.modalKicker}>Legal</p>
@@ -166,7 +164,6 @@ Mirai Technologies se reserva el derecho de modificar esta política para adapta
                 type="button"
                 className={styles.closeBtn}
                 onClick={() => setPrivacyOpen(false)}
-                aria-label="Cerrar"
               >
                 ✕
               </button>
